@@ -5,12 +5,12 @@ environment:
     - GENERATOR : "MinGW Makefiles"
       QTDIR: C:\Qt\5.6\mingw49_32
       PLATFORM: x86
-    - GENERATOR : "Visual Studio 14 2015 Win64"
-      QTDIR: C:\Qt\5.7\msvc2015_64
-      PLATFORM: x64
-    - GENERATOR : "Visual Studio 14 2015"
-      QTDIR: C:\Qt\5.7\msvc2015
-      PLATFORM: Win32
+    #- GENERATOR : "Visual Studio 14 2015 Win64"
+      #QTDIR: C:\Qt\5.7\msvc2015_64
+      #PLATFORM: x64
+    #- GENERATOR : "Visual Studio 14 2015"
+      #QTDIR: C:\Qt\5.7\msvc2015
+      #PLATFORM: Win32
 
 configuration:
   - Release
@@ -34,7 +34,7 @@ build_script:
   - if "%PLATFORM%" == "Win32" msbuild NodeEditor.sln
 
 after_build:
-  - 7z a examples.zip '.\lib\*.dll'
+  - 7z a examples.zip 'C:\projects\nodeeditor\build\lib\*.dll'
   - 7z a examples.zip '.\bin\*.exe'
 
 artifacts:
