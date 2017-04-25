@@ -35,10 +35,10 @@ build_script:
 
 after_build:
   #- 7z a examples.zip %APPVEYOR_BUILD_FOLDER%
-  - 7z a examples.zip build\bin\*.dll
-  - 7z a examples.zip build\bin\*.exe
   - cmd: cd
-  - cmd: dir \S \P "examples.zip"
+  - cmd: dir \S \P "*.zip"
+  - 7z a examples.zip build\**\*.dll
+  - 7z a examples.zip build\**\*.exe
 
 artifacts:
   - path: build\examples.zip
