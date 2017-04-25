@@ -35,6 +35,7 @@ build_script:
 
 after_build:
   - 7z a examples.zip %APPVEYOR_BUILD_FOLDER%
+  - cmd: cd
   - cmd: dir \S \P "examples.zip"
 
 artifacts:
