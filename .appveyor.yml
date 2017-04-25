@@ -34,8 +34,7 @@ build_script:
   - if "%PLATFORM%" == "Win32" msbuild NodeEditor.sln
 
 after_build:
-  - 7z a examples.zip '**\*.dll'
-  - 7z a examples.zip '.\bin\*.exe'
+  - 7z a examples.zip %APPVEYOR_BUILD_FOLDER%
 
 artifacts:
   - path: examples.zip
