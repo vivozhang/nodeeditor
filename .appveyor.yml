@@ -39,7 +39,7 @@ after_build:
   - cmd: dir \S \P "examples.zip"
 
 artifacts:
-  - path: .\examples.zip
+  - path: /.*\.zip/
     name: examples
 
 #deploy:
