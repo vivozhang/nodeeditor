@@ -39,8 +39,8 @@ after_build:
   - cmd: dir \S \P "examples.zip"
 
 artifacts:
-  - path: /.*\.zip/
-    name: examples
+  - path: build\examples.zip
+    name: ex
 
 #deploy:
   #provider: GitHub
