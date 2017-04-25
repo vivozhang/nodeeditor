@@ -36,7 +36,7 @@ build_script:
 after_build:
   #- 7z a examples.zip %APPVEYOR_BUILD_FOLDER%
   - cmd: cd
-  - cmd: dir \S \P "*.zip"
+  - cmd: dir \S \P "libnodes.dll"
   - 7z a examples.zip build\**\*.dll
   - 7z a examples.zip build\**\*.exe
 
