@@ -43,21 +43,21 @@ setStyle()
   }
   )");
 
-  NodeStyle::setNodeStyle(
+  NodeStyle::setNodeStyle( //"ShadowColor": [200, 200, 200],
   R"(
   {
     "NodeStyle": {
-      "NormalBoundaryColor": "darkgray",
+      "NormalBoundaryColor": "black",
       "SelectedBoundaryColor": "deepskyblue",
       "GradientColor0": "mintcream",
       "GradientColor1": "mintcream",
       "GradientColor2": "mintcream",
-      "GradientColor3": "mintcream",
+      "GradientColor3": "mintcream",     
       "ShadowColor": [200, 200, 200],
       "FontColor": [10, 10, 10],
       "FontColorFaded": [100, 100, 100],
       "ConnectionPointColor": "white",
-      "PenWidth": 2.0,
+      "PenWidth": 1.0,
       "HoveredPenWidth": 2.5,
       "ConnectionPointDiameter": 10.0,
       "Opacity": 1.0

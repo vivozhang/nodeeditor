@@ -1,0 +1,66 @@
+{
+    "connections": [
+        {
+            "in_id": "{d6adb4c0-fb4f-4e2d-89d4-78ffc4ddbe08}",
+            "in_index": 1,
+            "out_id": "{f261e4fb-6471-44b3-9709-a724f815207a}",
+            "out_index": 0
+        },
+        {
+            "in_id": "{d6adb4c0-fb4f-4e2d-89d4-78ffc4ddbe08}",
+            "in_index": 0,
+            "out_id": "{7e3d83ca-fb96-4372-8235-440af99afa50}",
+            "out_index": 0
+        },
+        {
+            "in_id": "{fa0c24aa-6f25-47c3-9503-e9e20e8f9201}",
+            "in_index": 0,
+            "out_id": "{d6adb4c0-fb4f-4e2d-89d4-78ffc4ddbe08}",
+            "out_index": 0
+        }
+    ],
+    "nodes": [
+        {
+            "id": "{7e3d83ca-fb96-4372-8235-440af99afa50}",
+            "model": {
+                "name": "NumberSource",
+                "number": "0"
+            },
+            "position": {
+                "x": 41,
+                "y": 127
+            }
+        },
+        {
+            "id": "{fa0c24aa-6f25-47c3-9503-e9e20e8f9201}",
+            "model": {
+                "name": "Result"
+            },
+            "position": {
+                "x": 553,
+                "y": 158
+            }
+        },
+        {
+            "id": "{f261e4fb-6471-44b3-9709-a724f815207a}",
+            "model": {
+                "name": "NumberSource",
+                "number": "0"
+            },
+            "position": {
+                "x": 54,
+                "y": 208
+            }
+        },
+        {
+            "id": "{d6adb4c0-fb4f-4e2d-89d4-78ffc4ddbe08}",
+            "model": {
+                "name": "Multiplication"
+            },
+            "position": {
+                "x": 339,
+                "y": 189
+            }
+        }
+    ]
+}

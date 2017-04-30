@@ -36,6 +36,52 @@ cubicPath(ConnectionGeometry const& geom)
   return cubic;
 }
 
+//vivo: add new connection function
+// straight line connection
+// manul adjust of connection to be added in the future
+QPainterPath
+ConnectionPainter::
+straightPath(ConnectionGeometry const& geom)
+{
+  QPointF const& source = geom.source();
+  QPointF const& sink   = geom.sink();
+
+  QPointF a,b,c,d;
+  // straight line connection
+  QPainterPath straight(source);
+
+  if(sink.x()-source.x()>20) //only two turns are need to connect
+  {
+      a.setX((source.x()+sink.x())/2);
+      a.setY(source.y());
+      b.setX(a.x());
+      b.setY(sink.y());
+
+      straight.lineTo(a);
+      straight.lineTo(b);
+      straight.lineTo(sink);
+   }
+  else
+  {
+      a.setX(source.x()+10);
+      a.setY(source.y());
+      b.setX(a.x());
+      b.setY((source.y()+sink.y())/2);
+      c.setX(sink.x()-10);
+      c.setY(b.y());
+      d.setX(c.x());
+      d.setY(sink.y());
+
+      straight.lineTo(a);
+      straight.lineTo(b);
+      straight.lineTo(c);
+      straight.lineTo(d);
+      straight.lineTo(sink);
+   }
+
+  return straight;
+}
+
 
 QPainterPath
 ConnectionPainter::
@@ -78,14 +124,15 @@ paint(QPainter* painter,
 
   auto dataType = connection.dataType();
 
-  if (connectionStyle.useDataDefinedColors())
+  //vivo:disable data type defined connect line color
+ /* if (connectionStyle.useDataDefinedColors())
   {
 
     normalColor   = connectionStyle.normalColor(dataType.id);
     hoverColor    = normalColor.lighter(200);
     selectedColor = normalColor.darker(200);
   }
-
+*/
   ConnectionGeometry const& geom =
     connection.connectionGeometry();
 
@@ -123,8 +170,9 @@ paint(QPainter* painter,
     painter->drawRect(geom.boundingRect());
   }
 #endif
-
-  auto cubic = cubicPath(geom);
+//replace cubic curve with straight lines
+//  auto cubic = cubicPath(geom);
+  auto straight = straightPath(geom);
 
   bool const hovered = geom.hovered();
 
@@ -147,7 +195,7 @@ paint(QPainter* painter,
 
     // cubic spline
 
-    painter->drawPath(cubic);
+    painter->drawPath(straight);
   }
 
   // draw normal line
@@ -172,7 +220,7 @@ paint(QPainter* painter,
     painter->setBrush(Qt::NoBrush);
 
     // cubic spline
-    painter->drawPath(cubic);
+    painter->drawPath(straight);
   }
 
   QPointF const& source = geom.source();
@@ -181,6 +229,6 @@ paint(QPainter* painter,
   painter->setPen(connectionStyle.constructionColor());
   painter->setBrush(connectionStyle.constructionColor());
   double const pointRadius = pointDiameter / 2.0;
-  painter->drawEllipse(source, pointRadius, pointRadius);
-  painter->drawEllipse(sink, pointRadius, pointRadius);
+  //painter->drawEllipse(source, pointRadius, pointRadius);
+  //painter->drawEllipse(sink, pointRadius, pointRadius);
 }

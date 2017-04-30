@@ -13,6 +13,12 @@ class Connection;
 
 class ConnectionPainter
 {
+//vivo: add point that allow user to adjust path
+private:
+   QPointF forcePointa;
+   QPointF forcePointb;
+   QPointF forcePointc;
+   QPointF forcePointd;
 public:
 
   ConnectionPainter();
@@ -22,6 +28,11 @@ public:
   static
   QPainterPath
   cubicPath(ConnectionGeometry const& geom);
+
+  static
+  QPainterPath
+  straightPath(ConnectionGeometry const& geom);
+
 
   static
   QPainterPath

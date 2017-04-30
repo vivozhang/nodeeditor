@@ -42,7 +42,7 @@ paint(QPainter* painter,
 
   drawConnectionPoints(painter, geom, state, model, scene);
 
-  drawFilledConnectionPoints(painter, geom, state, model);
+  //drawFilledConnectionPoints(painter, geom, state, model);
 
   drawModelName(painter, geom, state, model);
 
@@ -50,7 +50,7 @@ paint(QPainter* painter,
 
   drawResizeRect(painter, geom, model);
 
-  drawValidationRect(painter, geom, model, graphicsObject);
+ // drawValidationRect(painter, geom, model, graphicsObject);
 
   /// call custom painter
   if (auto painterDelegate = model->painterDelegate())
@@ -92,7 +92,10 @@ drawNodeRect(QPainter* painter,
   gradient.setColorAt(0.97, nodeStyle.GradientColor2);
   gradient.setColorAt(1.0, nodeStyle.GradientColor3);
 
-  painter->setBrush(gradient);
+  QBrush a = Qt::NoBrush;
+
+  //vivo: delete gradient, replace with pure color
+  painter->setBrush(nodeStyle.GradientColor1);
 
   float diam = nodeStyle.ConnectionPointDiameter;
 
@@ -100,7 +103,7 @@ drawNodeRect(QPainter* painter,
 
   double const radius = 3.0;
 
-  painter->drawRoundedRect(boundary, radius, radius);
+  painter->drawRect(boundary);
 }
 
 
@@ -180,9 +183,19 @@ drawConnectionPoints(QPainter* painter,
           painter->setBrush(nodeStyle.ConnectionPointColor);
         }
 
-        painter->drawEllipse(p,
-                             reducedDiameter * r,
-                             reducedDiameter * r);
+        //changed here, change connecting port type;
+        QPen pen(nodeStyle.NormalBoundaryColor,nodeStyle.HoveredPenWidth);
+        painter->setPen(pen);
+        QPointF p0 = p;
+        QPointF p1 = p;
+        p0.rx() -= 5;
+        p0.ry() += 5;
+        p1.rx() -= 5;
+        p1.ry() -= 5;
+
+        QPointF points[3] = {p0,p,p1};
+
+        painter->drawPolyline(points,3);
       }
     };
 

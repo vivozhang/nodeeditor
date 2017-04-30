@@ -40,8 +40,8 @@ NodeGraphicsObject(FlowScene &scene,
   setCacheMode( QGraphicsItem::DeviceCoordinateCache );
 
   auto const &nodeStyle = StyleCollection::nodeStyle();
-
-  {
+//vivo:disable shadow, it is not necessary, currently
+  /*{
     auto effect = new QGraphicsDropShadowEffect;
     effect->setOffset(4, 4);
     effect->setBlurRadius(20);
@@ -51,7 +51,7 @@ NodeGraphicsObject(FlowScene &scene,
   }
 
   setOpacity(nodeStyle.Opacity);
-
+*/
   setAcceptHoverEvents(true);
 
   setZValue(0);
